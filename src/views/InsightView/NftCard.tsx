@@ -19,7 +19,6 @@ import {
   ScatterDataPoint,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { PriceScaleMode } from "lightweight-charts";
 
 ChartJS.register(
   CategoryScale,
