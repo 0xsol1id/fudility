@@ -221,13 +221,8 @@ export const InsightView: FC = ({ }) => {
     setHistory(val)
   }
   async function GetHistory(url: string) {
-    try {
-      const response = await fetch(url, {
-        mode: 'cors',
-        headers: {
-          'Access-Control-Allow-Origin':'*'
-        }
-      })
+    try {      
+      const response = await fetch(url)
       const jsonData = await response.json()
       handleChangeHistory(jsonData)
     } catch (e) {
