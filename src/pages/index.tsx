@@ -21,7 +21,8 @@ const Home: NextPage = (props) => {
         <title>SOLJUNKS.IO</title>
         <meta
           name="description"
-          content="SOLJUNKS.IO"
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
         />
       </Head>
       <div id="root"></div>
