@@ -231,8 +231,9 @@ export const InsightView: FC = ({ }) => {
   }
 
   useEffect(() => {
-    GetHistory(`https://api-mainnet.magiceden.dev/v2/wallets/${walletToParsePublicKey}/activities?offset=0&limit=500`)
+    GetHistory(`http://167.86.106.48:3420/history/${walletToParsePublicKey}`)
   }, [history])
+
   const [value, setValue] = useState(walletToParsePublicKey);
 
   const onChange = async () => {
@@ -241,7 +242,7 @@ export const InsightView: FC = ({ }) => {
     isConnectedWallet = false
     setWalletToParsePublicKey(address)
     walletPublicKey = address
-    GetHistory(`https://api-mainnet.magiceden.dev/v2/wallets/${address}/activities?offset=0&limit=500`)
+    GetHistory(`http://167.86.106.48:3420/history/${address}`)
   };
 
   const randomWallet = () => {
@@ -250,7 +251,7 @@ export const InsightView: FC = ({ }) => {
     setWalletToParsePublicKey(wallet.Wallet)
     walletPublicKey = wallet.Wallet
     setValue(wallet.Wallet)
-    GetHistory(`https://api-mainnet.magiceden.dev/v2/wallets/${wallet.Wallet}/activities?offset=0&limit=500`)
+    GetHistory(`http://167.86.106.48:3420/history/${wallet.Wallet}`)
   };
 
   const onUseWalletClick = () => {
@@ -259,7 +260,7 @@ export const InsightView: FC = ({ }) => {
       setWalletToParsePublicKey(publicKey?.toBase58())
       walletPublicKey = publicKey?.toBase58()
       setValue(publicKey?.toBase58())
-      GetHistory(`https://api-mainnet.magiceden.dev/v2/wallets/${publicKey?.toBase58()}/activities?offset=0&limit=500`)
+      GetHistory(`http://167.86.106.48:3420/history/${publicKey?.toBase58()}`)
     }
   };
 
@@ -268,7 +269,7 @@ export const InsightView: FC = ({ }) => {
     setWalletToParsePublicKey(wallet)
     walletPublicKey = wallet.toString()
     setValue(wallet)
-    GetHistory(`https://api-mainnet.magiceden.dev/v2/wallets/${wallet}/activities?offset=0&limit=500`)
+    GetHistory(`http://167.86.106.48:3420/history/${wallet}`)
   };
 
   return (
@@ -386,22 +387,25 @@ export const InsightView: FC = ({ }) => {
                       ) : (
                         <div className="p-1">
                           <div className="p-1 rounded h-[51rem] mr-1 overflow-auto">
-                            {history?.map((num: any) => (
-                              
+                            {history?.map((num: any) => (                              
                               <div key={num}>
                                 {num.type != "bid" ? (
                                 <div className="rounded bg-base-200 text-sm">
                                   <p className="text-xs">{convertTimestamp(num.blockTime)}</p>
+                                  { num.collection != undefined ? (
                                   <button className="btn mt-1 btn-xs">
-                                    <a href={`https://magiceden.io/marketplace/${num.collection}`} target="_blank">
-                                      <p className="uppercase">{num.collection?.replaceAll("_", " ")}</p>
-                                    </a></button>
+                                    <a href={`https://magiceden.io/marketplace/${num.collection}`} target="_blank">  
+                                    <p className="uppercase">{num.collection?.replaceAll("_", " ")}</p>
+                                    </a></button>) : (
+                                      <p className="uppercase text-xs bg-gray-800 rounded mt-1">- undefined collection -</p>
+                                    )
+                                    }
                                   <div className="grid grid-cols-3 m-1 p-1">
                                     {num.type == "buyNow" && num.buyer == walletToParsePublicKey ?(
                                       <p className="rounded bg-green-600">BUY</p>
                                     ) : (
                                       num.type == "list" ? (
-                                        <p className="rounded bg-yellow-600">LIST</p>
+                                        <p className="rounded bg-yellow-400">LIST</p>
                                       ) : (
                                         num.type == "delist" ? (
                                           <p className="rounded bg-gray-500">DELIST</p>
@@ -417,7 +421,7 @@ export const InsightView: FC = ({ }) => {
                                           )
                                         )
                                       )
-                                    )}<button className="btn btn-xs bg-gray-800 rounded p-1 w-6 shadow-sm">
+                                    )}<button className="btn btn-primary btn-xs rounded p-1 w-6 shadow-sm ml-2">
                                       <a href={`https://magiceden.io/item-details/${num.tokenMint}`} target="_blank">
                                         👁️
                                       </a></button>
@@ -531,7 +535,7 @@ const Balance = ({ }) => {
   useEffect(() => {
     (async () => {
       try {
-        fetch('https://solana-api.projectserum.com', {
+        fetch('https://ssc-dao.genesysgo.net/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -565,7 +569,7 @@ const DomainName = ({ }) => {
   useEffect(() => {
     (async () => {
       try {
-        const connection = new Connection('https://solana-api.projectserum.com')
+        const connection = new Connection('https://ssc-dao.genesysgo.net/')
         const filters = [
           {
             memcmp: {

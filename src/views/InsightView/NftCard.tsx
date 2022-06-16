@@ -146,8 +146,8 @@ const NftCard: FC<Props> = ({
   const [collectionName, setcollectionName] = useState("-")
   const handleChangecollectionName = (val: string) => {
     if (collectionName != null) {
-      CheckFloor(`https://api-mainnet.magiceden.dev/v2/collections/${val}/stats`)
-      GetpriceHistory(`https://api-mainnet.magiceden.dev/v2/collections/${val}/activities?offset=0&limit=500`)
+      CheckFloor(`http://167.86.106.48:3420/checkfloor/${val}`)
+      GetpriceHistory(`http://167.86.106.48:3420/pricehistory/${val}`)
     }
     else
       handleChangeFloor("NaN")
@@ -204,40 +204,10 @@ const NftCard: FC<Props> = ({
     }
   }
 
-  try {
-    if (properties != undefined) {
-      token = properties.creators
-      token.forEach((element) => {
-        if (element.address == "CNEGFPZeAmdBmcY5qTvBPrAsY9JcSeRuZ28amar5fCVY") {
-          const nameFormatted = name.toString().replace("#", "%23").replace(" ", "%20")
-          const url = `http://localhost:3069/soljunks/name/${nameFormatted}`
-          //CheckRarity(url)
-        }
-        else if (element.address == "BwspSJXdFSiRtiKbJZvmFT9RBPqTycC5HbokGi1F7Y74") {
-          const nameFormatted = name.toString().replace("#", "%23").replace(" ", "%20")
-          const url = `http://localhost:3069/smb/name/${nameFormatted}`
-          //CheckRarity(url)
-        }
-        else if (element.address == "63nNhLkD7iFXQiUhj2fifwcbaYemv1fqebehcipUeoGx") {
-          const nameFormatted = name.toString().replace("#", "%23").replace(" ", "%20")
-          const url = `http://localhost:3069/faces/name/${nameFormatted}`
-          //CheckRarity(url)
-        }
-        else if (element.address == "3HXUAb7FJ5xk3YEV86SdXAuNs3utwpuKzpj3coEJC9te") {
-          const nameFormatted = name.toString().replace("#", "%23").replace(" ", "%20")
-          const url = `http://localhost:3069/sdc_gen2/name/${nameFormatted}`
-          //CheckRarity(url)
-        }
-      })
-    }
-  } catch (e) {
-    console.log(e)
-  }
-
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleModal() {
-    GetCollectionName(`https://api-mainnet.magiceden.dev/v2/tokens/${details.mint}`)
+    GetCollectionName(`http://167.86.106.48:3420/collectionname/${details.mint}`)
     setIsOpen(!isOpen);
   }
 
