@@ -231,7 +231,7 @@ export const InsightView: FC = ({ }) => {
   }
 
   useEffect(() => {
-    GetHistory(`http://167.86.106.48:3420/history/${walletToParsePublicKey}`)
+    GetHistory(`https://fudility.xyz:3420/history/${walletToParsePublicKey}`)
   }, [history])
 
   const [value, setValue] = useState(walletToParsePublicKey);
@@ -242,7 +242,7 @@ export const InsightView: FC = ({ }) => {
     isConnectedWallet = false
     setWalletToParsePublicKey(address)
     walletPublicKey = address
-    GetHistory(`http://167.86.106.48:3420/history/${address}`)
+    GetHistory(`https://fudility.xyz:3420/history/${address}`)
   };
 
   const randomWallet = () => {
@@ -251,7 +251,7 @@ export const InsightView: FC = ({ }) => {
     setWalletToParsePublicKey(wallet.Wallet)
     walletPublicKey = wallet.Wallet
     setValue(wallet.Wallet)
-    GetHistory(`http://167.86.106.48:3420/history/${wallet.Wallet}`)
+    GetHistory(`https://fudility.xyz:3420/history/${wallet.Wallet}`)
   };
 
   const onUseWalletClick = () => {
@@ -260,7 +260,7 @@ export const InsightView: FC = ({ }) => {
       setWalletToParsePublicKey(publicKey?.toBase58())
       walletPublicKey = publicKey?.toBase58()
       setValue(publicKey?.toBase58())
-      GetHistory(`http://167.86.106.48:3420/history/${publicKey?.toBase58()}`)
+      GetHistory(`https://fudility.xyz:3420/history/${publicKey?.toBase58()}`)
     }
   };
 
@@ -269,7 +269,7 @@ export const InsightView: FC = ({ }) => {
     setWalletToParsePublicKey(wallet)
     walletPublicKey = wallet.toString()
     setValue(wallet)
-    GetHistory(`http://167.86.106.48:3420/history/${wallet}`)
+    GetHistory(`https://fudility.xyz:3420/history/${wallet}`)
   };
 
   return (

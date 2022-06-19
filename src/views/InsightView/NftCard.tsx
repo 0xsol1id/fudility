@@ -146,8 +146,8 @@ const NftCard: FC<Props> = ({
   const [collectionName, setcollectionName] = useState("-")
   const handleChangecollectionName = (val: string) => {
     if (collectionName != null) {
-      CheckFloor(`http://167.86.106.48:3420/checkfloor/${val}`)
-      GetpriceHistory(`http://167.86.106.48:3420/pricehistory/${val}`)
+      CheckFloor(`https://fudility.xyz:3420/checkfloor/${val}`)
+      GetpriceHistory(`https://fudility.xyz:3420/pricehistory/${val}`)
     }
     else
       handleChangeFloor("NaN")
@@ -207,7 +207,7 @@ const NftCard: FC<Props> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleModal() {
-    GetCollectionName(`http://167.86.106.48:3420/collectionname/${details.mint}`)
+    GetCollectionName(`https://fudility.xyz:3420/collectionname/${details.mint}`)
     setIsOpen(!isOpen);
   }
 
