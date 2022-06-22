@@ -280,13 +280,13 @@ const NftCard: FC<Props> = ({
                   <BurnButton image={image} tokenMintAddress={tokenMintAddress} connection={connection} publicKey={publicKey} wallet={wallet} />
                 </div>
               ) : <div className="flex justify-center mr-4 ml-3 mt-1 mb-1">
-                <p className="font-bold">{name}</p>
+                {/*<p className="font-bold">{name}</p>*/}
               </div>}
             </div>
           ) : (
             // Fallback when preview isn't available. This could be broken image, video, or audio
             <div>
-              <div className="w-auto h-[13rem] flex items-center justify-center mr-4 ml-3 mt-1 mb-1">
+              <div className="w-auto h-[13rem] flex items-center justify-center mr-4 ml-3 mt-1 mb-1 tooltip">
                 <button onClick={toggleModal} className="btn btn-ghost h-52 p-2">
                   <img
                     src={image}
@@ -294,7 +294,6 @@ const NftCard: FC<Props> = ({
                     className="object-cover h-48 rounded"
                   />
                   <EyeOffIcon className="h-32 w-32 text-white" />
-
                 </button>
               </div>
               {publicKey && isConnectedWallet ? (

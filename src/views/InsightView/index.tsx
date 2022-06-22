@@ -232,7 +232,7 @@ export const InsightView: FC = ({ }) => {
 
   useEffect(() => {
     GetHistory(`https://fudility.xyz:3420/history/${walletToParsePublicKey}`)
-  }, [history])
+  }, [])
 
   const [value, setValue] = useState(walletToParsePublicKey);
 
@@ -310,44 +310,7 @@ export const InsightView: FC = ({ }) => {
                 <button onClick={randomWallet} className="btn btn-primary mr-2 text-xl">
                   🤷‍♂️
                 </button>
-              </div>
-              <div className="tooltip tooltip-left" data-tip="Influencer Wallets">
-                <div className="dropdown">
-                  <div tabIndex={0} className="btn mr-2 btn-primary text-xl">⭐</div>
-                  <ul tabIndex={0} className="p-1 mt-1 text-sm shadow menu dropdown-content bg-base-300 rounded w-48 border border-gray-500">
-                    <li>
-                      <a onClick={() => getInfluencerWallet("94qM9awvQiW35vmS5m86sHeJp1JZAQWkW7w3vYwHZeor")} className="h-8">
-                        Steve Aoki
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => getInfluencerWallet(" 6gjFy9Gp3mMN8uTLtfAyMmxdDfUe74YTo8cUTDXJtBUH")} className="h-8">
-                        SOLBIGBRAIN
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => getInfluencerWallet("73tF8uN3BwVzUzwETv59WNAafuEBct2zTgYbYXLggQiU")} className="h-8">
-                        Sol King
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => getInfluencerWallet("EAHJNfFDtivTMzKMNXzwAF9RTAeTd4aEYVwLjCiQWY1E")} className="h-8">
-                        ICED Knife
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => getInfluencerWallet("DxKc73eJX5J1kY5ND69hnLs7ox64Q2exN3BVUWxBtBjo")} className="h-8">
-                        Knoxtrades
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => getInfluencerWallet("HLSgM1a7wSufVwe1NrPPR22ynY2aPsH8a1XQfqFsQiqY")} className="h-8">
-                        0xCelon
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              </div>              
               <div className="tooltip tooltip-left" data-tip="Clean up your wallet">
                 <SelectAndConnectWalletButton
                   onUseWalletClick={onUseWalletClick}
