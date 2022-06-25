@@ -441,7 +441,7 @@ const NftList = ({ nfts, error }: NftListProps) => {
   const [pagination, setPagination] = useState({
     data: nfts,
     offset: 0,
-    numberPerPage: 21,
+    numberPerPage: 27,
     pageCount: 0,
     currentData: nfts
   });
@@ -459,19 +459,19 @@ const NftList = ({ nfts, error }: NftListProps) => {
   }
 
   return (
-    <div className="p-2 h-[49.5rem]">
-      <div className="grid grid-cols-2 md:grid-cols-7 gap-2 items-start overflow-auto max-h-[49rem]">
+    <div className="rounded p-2 h-[49.5rem]">
+      <div className="grid grid-cols-2 md:grid-cols-9 gap-1 items-start overflow-auto h-[47.5rem]">
         {/*nfts?.map((nft) => (
           <NftCard key={nft.mint} isConnectedWallet={isConnectedWallet} details={nft} onSelect={() => { }} />
         ))*/}
         {pagination.currentData && pagination.currentData.map((nft: any, index) => (
-            <div key={index} className="post rounded bg-base-300 text-sm">
+            <div key={index} className="post text-sm">
               <NftCard key={nft.mint} isConnectedWallet={isConnectedWallet} details={nft} onSelect={() => { }} />
             </div>
           ))}
       </div>
       <div className="rounded mt-1 mx.-auto bg-base-300">
-        {nfts.length >= 21 ? (
+        {nfts.length >= 27 ? (
         <ReactPaginate
           previousLabel={'<'}
           nextLabel={'>'}
