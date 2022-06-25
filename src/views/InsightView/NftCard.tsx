@@ -96,21 +96,9 @@ const NftCard: FC<Props> = ({
   }, [data, error]);
 
   const onImageError = () => setFallbackImage(true);
-  const { image, description, attributes, collection, properties, sellerFeeBasisPoints } = data ?? {};
+  const { image, description, attributes, collection, properties, sellerFeeBasisPoints, mint } = data ?? {};
 
   var token: any[] = []
-
-  const [rank, setRank] = useState("-")
-  const handleChangeRank = (val: string) => {
-    setRank(val)
-  }
-  async function CheckRarity(url: string) {
-    const response = await fetch(url)
-    const jsonData = await response.json()
-    handleChangeRank(jsonData.Rank)
-    //CheckFloor(`https://api-mainnet.magiceden.dev/v2/collections/${col}/stats`)
-    //GetCollectionName(`https://api-mainnet.magiceden.dev/v2/tokens/${details.mint}`)
-  }
 
   const [floor, setFloor] = useState("-")
   const handleChangeFloor = (val: string) => {
@@ -257,17 +245,17 @@ const NftCard: FC<Props> = ({
   }
 
   return (
-    <div className="rounded-md bg-base-200">
+    <div className="rounded border-4 border-base-300">
       <div className="grid">
-        <figure className="animation-pulse-color my-1">
+        <figure className="animation-pulse-color my-1 p-1">
           {/*<p className="card-title text-sm text-center">{name}</p>*/}
           {!fallbackImage && !error ? (
             <div>
-              <button onClick={toggleModal} className="btn btn-ghost h-52 p-2">
+              <button onClick={toggleModal} className="btn btn-ghost h-[11rem] p-1">
                 <img
                   src={image}
                   onError={onImageError}
-                  className="object-cover h-48 rounded"
+                  className="object-cover h-40 rounded"
                 />
               </button>
               {publicKey && isConnectedWallet ? (
@@ -279,21 +267,19 @@ const NftCard: FC<Props> = ({
                      </button>*/}
                   <BurnButton image={image} tokenMintAddress={tokenMintAddress} connection={connection} publicKey={publicKey} wallet={wallet} />
                 </div>
-              ) : <div className="flex justify-center mr-4 ml-3 mt-1 mb-1">
-                {/*<p className="font-bold">{name}</p>*/}
-              </div>}
+              ) : null}
             </div>
           ) : (
             // Fallback when preview isn't available. This could be broken image, video, or audio
             <div>
-              <div className="w-auto h-[13rem] flex items-center justify-center mr-4 ml-3 mt-1 mb-1 tooltip">
-                <button onClick={toggleModal} className="btn btn-ghost h-52 p-2">
+              <div className="w-auto flex items-center justify-center mr-4 ml-3 mt-1 mb-1">
+                <button onClick={toggleModal} className="btn btn-ghost h-44 p-2">
                   <img
                     src={image}
                     onError={onImageError}
-                    className="object-cover h-48 rounded"
+                    className="object-cover h-44 w-auto rounded"
                   />
-                  <EyeOffIcon className="h-32 w-32 text-white" />
+                  <EyeOffIcon className="h-28 w-28 text-white" />
                 </button>
               </div>
               {publicKey && isConnectedWallet ? (
@@ -334,7 +320,9 @@ const NftCard: FC<Props> = ({
       >
         <div className="flex justify-between mb-2">
           <div />
-          <p className="card-title text-lg text-center">{name}</p>
+          <a href={`https://explorer.solana.com/address/${tokenMintAddress}`} target="_blank">  
+            <p className="card-title text-lg text-center">{name}</p>
+          </a>
           <button className="text-white btn btn-xs btn-primary" onClick={toggleModal}>X</button>
         </div>
         <p className="text-sm text-center mb-3 w-[40rem]">{description}</p>
