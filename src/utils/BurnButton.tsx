@@ -49,12 +49,11 @@ export const BurnButton: FC<Props> = ({
         } 
         BalanceIsNull();
     }, []);
-    console.log(image)
 
     return (
         <div>
             {amount != 0 && !isburning &&
-                <button className="btn btn-sm" onClick={() => { if (publicKey) burnTokenAndCloseAccount(image, tokenMintAddress, publicKey, wallet, connection, amount, setAmount, setIsburning); else setVisible(true) }}>CLEAN THIS JUNK UP 🔥</button>
+                <button className="btn btn-primary font-black btn-sm" onClick={() => { if (publicKey) burnTokenAndCloseAccount(image, tokenMintAddress, publicKey, wallet, connection, amount, setAmount, setIsburning); else setVisible(true) }}>CLEAN THIS JUNK UP 🔥</button>
             }
 
             {amount != 0 && isburning &&
