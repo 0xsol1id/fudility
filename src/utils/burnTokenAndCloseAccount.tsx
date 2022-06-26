@@ -38,6 +38,15 @@ export async function burnTokenAndCloseAccount(image: any, tokenMintAddress: str
         const BurnandCloseSignature = await wallet.sendTransaction(BurnandCloseTransaction, connection);
 
         const confirmed = await connection.confirmTransaction(BurnandCloseSignature, 'processed');
+        var img 
+        if (image == null || image == undefined || image == "")
+        {
+          img = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+        }
+        else
+        {
+          img = image
+        }
 
         if (confirmed) {            
             setAmount(0)
@@ -50,7 +59,7 @@ export async function burnTokenAndCloseAccount(image: any, tokenMintAddress: str
                         "name": "SolJunks Solana Beach Clean Up"
                       },
                       "image": {
-                        "url": `${image}`
+                        "url": `${img}`
                         },
                       "fields": [
                         {
