@@ -139,7 +139,7 @@ export const RarityView: FC = ({ }) => {
             </div>
           </div>
         ) : <ErrorScreen />}
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ export const HomeView: FC = ({ }) => {
             </div>
           </div>
         </div>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );

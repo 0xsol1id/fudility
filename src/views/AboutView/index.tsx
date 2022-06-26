@@ -85,7 +85,7 @@ export const AboutView: FC = ({ }) => {
           </div>
         </div>        
         <img className="mx-auto p-5"  src="./coming_soon.png" alt="cs" />
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );

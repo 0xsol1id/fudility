@@ -587,7 +587,7 @@ export const MintView: FC<HomeProps> = (props) => {
             {alertState.message}
           </Alert>
         </Snackbar>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );
