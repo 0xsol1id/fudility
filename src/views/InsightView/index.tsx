@@ -414,7 +414,7 @@ export const InsightView: FC = ({ }) => {
             </div>
           </div>
         </div>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );

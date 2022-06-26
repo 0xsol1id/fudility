@@ -33,10 +33,13 @@ export const GridView: FC = ({ }) => {
                   </Link>
                 </button>
               </div>
+              <a href="https://tradingview.com" target="_blank" className="btn btn-ghost w-auto ml-2">
+                <img className="" src="./tv_white.png"></img>
+              </a> 
             </div>
             : <div />}
           {publicKey ?
-            <div className="flex">
+            <div className="flex">              
               <div className="dropdown">
                 <div tabIndex={0} className="btn mr-2"><img src="./button/watchlists.png"/></div>
                 <ul tabIndex={0} className="p-1 mt-1 text-sm shadow menu dropdown-content bg-base-300 rounded w-48 border border-gray-500">
@@ -86,7 +89,7 @@ export const GridView: FC = ({ }) => {
                               <Grid3x4 />
                               : <ErrorScreen />
         }
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );
