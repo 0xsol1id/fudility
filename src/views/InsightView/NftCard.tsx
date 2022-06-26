@@ -265,7 +265,7 @@ const NftCard: FC<Props> = ({
                       🗑️
                     </p>
                      </button>*/}
-                  <BurnButton image={image} tokenMintAddress={tokenMintAddress} connection={connection} publicKey={publicKey} wallet={wallet} />
+                  <BurnButton image={image} title={name} tokenMintAddress={tokenMintAddress} connection={connection} publicKey={publicKey} wallet={wallet} />
                 </div>
               ) : null}
             </div>
@@ -289,7 +289,7 @@ const NftCard: FC<Props> = ({
                       🗑️
                     </p>
                      </button>*/}
-                  <BurnButton image={image} tokenMintAddress={tokenMintAddress} connection={connection} publicKey={publicKey} wallet={wallet} />
+                  <BurnButton image={image} title={name} tokenMintAddress={tokenMintAddress} connection={connection} publicKey={publicKey} wallet={wallet} />
                 </div>
               ) : (null)}
             </div>
