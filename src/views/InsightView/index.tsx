@@ -460,7 +460,7 @@ const NftList = ({ nfts, error }: NftListProps) => {
 
   return (
     <div className="rounded p-2 h-[49.5rem]">
-      <div className="grid grid-cols-2 md:grid-cols-9 gap-1 items-start overflow-auto h-[47.5rem]">
+      <div className="grid grid-cols-2 md:grid-cols-9 gap-1 items-start overflow-auto h-[47rem]">
         {/*nfts?.map((nft) => (
           <NftCard key={nft.mint} isConnectedWallet={isConnectedWallet} details={nft} onSelect={() => { }} />
         ))*/}
