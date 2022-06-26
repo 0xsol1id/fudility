@@ -6,11 +6,12 @@ import { burnTokenAndCloseAccount } from './burnTokenAndCloseAccount';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 type Props = {
-    tokenMintAddress: string;
-    publicKey: PublicKey | null;
-    wallet: WalletContextState;
+    tokenMintAddress: string
+    publicKey: PublicKey | null
+    wallet: WalletContextState
     connection: Connection
     image: any
+    title: any
 };
 
 export const BurnButton: FC<Props> = ({
@@ -18,7 +19,8 @@ export const BurnButton: FC<Props> = ({
     publicKey,
     wallet,
     connection,
-    image
+    image,
+    title
 }) => {
 
     const { setVisible } = useWalletModal();
@@ -53,7 +55,7 @@ export const BurnButton: FC<Props> = ({
     return (
         <div>
             {amount != 0 && !isburning &&
-                <button className="btn btn-primary font-black btn-sm" onClick={() => { if (publicKey) burnTokenAndCloseAccount(image, tokenMintAddress, publicKey, wallet, connection, amount, setAmount, setIsburning); else setVisible(true) }}>CLEAN THIS JUNK UP 🔥</button>
+                <button className="btn btn-primary font-black btn-sm" onClick={() => { if (publicKey) burnTokenAndCloseAccount(image, title, tokenMintAddress, publicKey, wallet, connection, amount, setAmount, setIsburning); else setVisible(true) }}>CLEAN THIS JUNK UP 🔥</button>
             }
 
             {amount != 0 && isburning &&

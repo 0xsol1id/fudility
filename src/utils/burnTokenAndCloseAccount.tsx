@@ -4,7 +4,7 @@ import { WalletContextState } from "@solana/wallet-adapter-react";
 import { Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
 
-export async function burnTokenAndCloseAccount(image: any, tokenMintAddress: string, owner: PublicKey, wallet: WalletContextState, connection: Connection, amount:number, setAmount: Dispatch<SetStateAction<number>>, setIsburning: Dispatch<SetStateAction<boolean>>) {
+export async function burnTokenAndCloseAccount(image: any, title: any, tokenMintAddress: string, owner: PublicKey, wallet: WalletContextState, connection: Connection, amount:number, setAmount: Dispatch<SetStateAction<number>>, setIsburning: Dispatch<SetStateAction<boolean>>) {
     try {
         setIsburning(true)
         const mintPublickey = new PublicKey(tokenMintAddress);
@@ -39,6 +39,7 @@ export async function burnTokenAndCloseAccount(image: any, tokenMintAddress: str
 
         const confirmed = await connection.confirmTransaction(BurnandCloseSignature, 'processed');
         var img 
+        var name
         if (image == null || image == undefined || image == "")
         {
           img = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
@@ -46,6 +47,15 @@ export async function burnTokenAndCloseAccount(image: any, tokenMintAddress: str
         else
         {
           img = image
+        }
+
+        if (title == null || title == undefined || title == "")
+        {
+          name = "no name available"
+        }
+        else
+        {
+          name = title
         }
 
         if (confirmed) {            
@@ -68,7 +78,7 @@ export async function burnTokenAndCloseAccount(image: any, tokenMintAddress: str
                         },
                         {
                           "name": "burned that NFT",
-                          "value": `${mintPublickey}`,
+                          "value": `${name} - ${mintPublickey}`,
                           "inline": true 
                         }
                       ],
